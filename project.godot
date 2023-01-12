@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Aim Labs"
-run/main_scene="res://TestWorld/World.tscn"
+run/main_scene="res://TestWorld/PracticeRange.tscn"
 boot_splash/image="res://image/icon.png"
 config/icon="res://image/icon.png"
 config/windows_native_icon="res://image/icon.ico"

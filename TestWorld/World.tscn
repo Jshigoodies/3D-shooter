@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://TestWorld/KinematicBody.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TestWorld/enemy.gd" type="Script" id=2]
+[ext_resource path="res://TestWorld/timeHud.tscn" type="PackedScene" id=3]
+[ext_resource path="res://TestWorld/World.gd" type="Script" id=4]
+[ext_resource path="res://Level/enemy.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -15,6 +18,7 @@ albedo_color = Color( 0.14902, 0, 1, 1 )
 [sub_resource type="BoxShape" id=5]
 
 [node name="World" type="Spatial"]
+script = ExtResource( 4 )
 
 [node name="plane" type="StaticBody" parent="."]
 transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0 )
@@ -31,16 +35,7 @@ shape = SubResource( 2 )
 [node name="KinematicBody" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.15013, 0 )
 
-[node name="enemy" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.79742, -11.9105 )
-script = ExtResource( 2 )
-
-[node name="MeshInstance" type="MeshInstance" parent="enemy"]
-mesh = SubResource( 3 )
-material/0 = SubResource( 4 )
-
-[node name="CollisionShape" type="CollisionShape" parent="enemy"]
-shape = SubResource( 5 )
+[node name="enemy" parent="." instance=ExtResource( 5 )]
 
 [node name="enemy2" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.97194, 2.79742, -11.9105 )
@@ -52,3 +47,52 @@ material/0 = SubResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="enemy2"]
 shape = SubResource( 5 )
+
+[node name="enemy3" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.97194, 8.43258, -11.9105 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="enemy3"]
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="enemy3"]
+shape = SubResource( 5 )
+
+[node name="enemy4" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4214, 8.43258, -11.9105 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="enemy4"]
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="enemy4"]
+shape = SubResource( 5 )
+
+[node name="enemy5" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2251, 5.76783, -6.97284 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="enemy5"]
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="enemy5"]
+shape = SubResource( 5 )
+
+[node name="enemy6" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2251, 7.24651, -0.378355 )
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="enemy6"]
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="enemy6"]
+shape = SubResource( 5 )
+
+[node name="timeHud" parent="." instance=ExtResource( 3 )]
+
+[connection signal="getTime" from="." to="timeHud" method="_on_World_getTime"]
+[connection signal="deadKIA" from="KinematicBody" to="." method="_on_KinematicBody_deadKIA"]

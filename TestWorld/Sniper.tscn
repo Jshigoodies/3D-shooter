@@ -65,7 +65,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=6]
 resource_name = "fire"
-length = 0.5
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Anchor:rotation_degrees")
 tracks/0/interp = 1
@@ -124,7 +124,6 @@ tracks/0/keys = {
 }
 
 [node name="Sniper" type="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="Anchor" type="Spatial" parent="."]

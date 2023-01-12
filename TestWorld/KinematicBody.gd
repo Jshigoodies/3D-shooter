@@ -2,6 +2,9 @@ extends KinematicBody
 signal fire_Gun
 signal reload_Gun
 
+signal deadKIA
+signal getSpeedRun
+
 const MOUSE_SENS = 0.1
 
 onready var camera = $root/Camera
@@ -26,6 +29,7 @@ const AIR_ACCEL = 9.0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	camera.far = 1000
 
 func _process(delta):
 	fire_gun()
@@ -101,3 +105,8 @@ func window_activity():
 
 func _on_RayCast_hit():
 	emit_signal("hit_bad_guy")
+
+
+func _on_RayCast_enemyHit():
+	emit_signal("deadKIA")
+

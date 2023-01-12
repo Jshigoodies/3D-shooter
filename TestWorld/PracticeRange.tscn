@@ -1,0 +1,192 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://TestWorld/KinematicBody.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Level/boss.tscn" type="PackedScene" id=2]
+[ext_resource path="res://TestWorld/timeHud.tscn" type="PackedScene" id=3]
+[ext_resource path="res://TestWorld/PracticeRange.gd" type="Script" id=4]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="BoxShape" id=2]
+
+[sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.0509804, 0.243137, 0.0235294, 1 )
+
+[sub_resource type="BoxShape" id=5]
+
+[sub_resource type="CubeMesh" id=6]
+
+[sub_resource type="BoxShape" id=7]
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 60, 80 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "movement"
+length = 32.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4, 8, 12, 16, 20, 24, 28, 32 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 60, 80 ), Vector3( -137, 60, 80 ), Vector3( -137, 60, -7 ), Vector3( -137, 60, -147 ), Vector3( 0, 60, -147 ), Vector3( 135, 60, -147 ), Vector3( 135, 60, -1 ), Vector3( 135, 60, 126 ), Vector3( 0, 60, 80 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4, 8, 12, 16, 20, 24, 28, 32 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 90, 0, 0 ), Vector3( 0, 0, 90 ), Vector3( 0, 90, 0 ), Vector3( 0, 0, 0 ), Vector3( 90, 90, 0 ), Vector3( 0, 90, 90 ), Vector3( 90, 90, 90 ), Vector3( 0, 0, 0 ) ]
+}
+
+[node name="PracticeRange" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="obstacles" type="Spatial" parent="."]
+
+[node name="building" type="StaticBody" parent="obstacles"]
+transform = Transform( 0.707107, 17.6777, -30.6186, -0.707107, 17.6777, -30.6186, 0, 43.3013, 25, 111, 19, -39 )
+
+[node name="MeshInstance" type="MeshInstance" parent="obstacles/building"]
+mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/building"]
+shape = SubResource( 2 )
+
+[node name="building2" type="StaticBody" parent="obstacles"]
+transform = Transform( 0.707107, -25, 25, 0.5, 42.6777, 7.32233, -0.5, 7.32233, 42.6777, 8, -14, 152 )
+
+[node name="MeshInstance" type="MeshInstance" parent="obstacles/building2"]
+mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/building2"]
+shape = SubResource( 2 )
+
+[node name="building3" type="StaticBody" parent="obstacles"]
+transform = Transform( 0.5, -43.3013, 2.18557e-06, -0.866025, -25, -3.78552e-06, 8.74228e-08, 0, -50, -133, 8, 25 )
+
+[node name="MeshInstance" type="MeshInstance" parent="obstacles/building3"]
+mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/building3"]
+shape = SubResource( 2 )
+
+[node name="building4" type="StaticBody" parent="obstacles"]
+transform = Transform( 1.31134e-07, 0, -50, 0.866025, -25, 5.67828e-06, -0.5, -43.3013, -3.27835e-06, -74, 16, -95 )
+
+[node name="MeshInstance" type="MeshInstance" parent="obstacles/building4"]
+mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/building4"]
+shape = SubResource( 2 )
+
+[node name="building5" type="StaticBody" parent="obstacles"]
+transform = Transform( -0.25, -37.5, -30.6186, 0.75, 12.5, -30.6186, 0.612372, -30.6186, 25, -14, 16, -38 )
+
+[node name="MeshInstance" type="MeshInstance" parent="obstacles/building5"]
+mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/building5"]
+shape = SubResource( 2 )
+
+[node name="building6" type="StaticBody" parent="obstacles"]
+transform = Transform( -0.40533, 45.2665, -6.34133, 0.75, 12.5, -30.6186, -0.522692, -17.1666, -39.0165, -54, 16, 70 )
+
+[node name="MeshInstance" type="MeshInstance" parent="obstacles/building6"]
+mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/building6"]
+shape = SubResource( 2 )
+
+[node name="building7" type="StaticBody" parent="obstacles"]
+transform = Transform( -0.344625, -8.39238, 46.1806, 0.903093, 10.464, 18.75, -0.256236, 48.1671, 3.97297, 86, 16, 88 )
+
+[node name="MeshInstance" type="MeshInstance" parent="obstacles/building7"]
+mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/building7"]
+shape = SubResource( 2 )
+
+[node name="building8" type="StaticBody" parent="obstacles"]
+transform = Transform( 0.266563, 20.573, -43.5788, 0.903093, 10.464, 18.75, 0.3367, -44.3538, -15.79, 86, 16, -95 )
+
+[node name="MeshInstance" type="MeshInstance" parent="obstacles/building8"]
+mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/building8"]
+shape = SubResource( 2 )
+
+[node name="floor" type="StaticBody" parent="obstacles"]
+transform = Transform( 200, 0, 0, 0, 1, 0, 0, 0, 200, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="obstacles/floor"]
+mesh = SubResource( 3 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/floor"]
+shape = SubResource( 5 )
+
+[node name="ramp" type="StaticBody" parent="obstacles"]
+transform = Transform( 0.65974, -0.612372, -17.4238, 0.75, 0.5, 17.3205, -0.0473672, -0.612372, 31.566, 0, 17, -3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="obstacles/ramp"]
+mesh = SubResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="obstacles/ramp"]
+shape = SubResource( 7 )
+
+[node name="KinematicBody" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 198, 0 )
+
+[node name="boss" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 60, 80 )
+
+[node name="movement" type="AnimationPlayer" parent="boss"]
+autoplay = "movement"
+reset_on_save = false
+anims/RESET = SubResource( 8 )
+anims/movement = SubResource( 9 )
+
+[node name="timeHud" parent="." instance=ExtResource( 3 )]
+
+[connection signal="time" from="." to="boss" method="_on_PracticeRange_time"]
+[connection signal="time" from="." to="timeHud" method="_on_PracticeRange_time"]
+[connection signal="deadKIA" from="KinematicBody" to="." method="_on_KinematicBody_deadKIA"]
